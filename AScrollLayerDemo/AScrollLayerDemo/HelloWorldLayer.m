@@ -60,9 +60,9 @@
     CCScene *scene = [CCScene node];
     
     AScrollLayer *scrollLayer = [AScrollLayer node];
-    scrollLayer.horizontalScrollDisabled = YES;
+    //scrollLayer.horizontalScrollDisabled = YES;
     //scrollLayer.verticalScrollDisabled = YES;
-    scrollLayer.contentSize = CGSizeMake(600, 4000);
+    scrollLayer.contentSize = CGSizeMake(800, 4000);
     
     for (int i=0; i<100; i++)
     {

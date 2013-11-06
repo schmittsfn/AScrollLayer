@@ -45,7 +45,7 @@
  TODO:
  - Make scrolling more natural by defining deceleration using physics -- it's linear right now
  - Subtle bounce back when hitting edge whilst dragging
- - Remove studdering of content when pulling content beyond bounds (rubber band)
+ - Remove 'stuttering' of content when pulling content beyond bounds (rubber band)
  - Counter-force when pulling content beyond bounds (i.e. content translates less and less due to rubber band)
  - Let bounds of content restrict scrolling instead of verticalScrollDisabled/horizontalScrollDisabled booleans(lazy)
  
@@ -124,47 +124,59 @@
 - (void)draw
 {
     
-// Get top left hand corner of content & Add/Remove nodes for better performance
+    // Get top left hand corner of content & Add/Remove nodes for better performance
     float top_y = _contentLayer.boundingBox.origin.y + _contentLayer.boundingBox.size.height;
     float top_x = _contentLayer.boundingBox.origin.x;
-
     
-// I think that all/or most of the encapsulated code to determine bounds/bounce/deceleration could be done in a couple of equations and probably get rid of bug #001
-/******************************************************************************************************/
-// Check Bounds
+    
+    // I think that all/or most of the encapsulated code to determine bounds/bounce/deceleration could be done in a couple of equations and probably get rid of bug #001
+    /******************************************************************************************************/
+    // Check Bounds
     CGPoint topLeftCorner = ccp(top_x, top_y);
     CGPoint max = ccp((self.contentSize.width - _winSize.width) * -1, self.contentSize.height);
     CGPoint min = ccp(0, _winSize.height);
     
+    CGPoint overlapX;
+    CGPoint overlapY;
     if (topLeftCorner.y > max.y) {
-        _overlap = ccpMult(ccpSub(topLeftCorner, max), -1) ;
+        overlapY = ccpMult(ccpSub(topLeftCorner, max), -1);
+        _overlap.y = overlapY.y;
         _bouncing = YES;
         _decelerating = NO;
     }
     else if (topLeftCorner.y < min.y) {
-        _overlap =  ccpSub(min, topLeftCorner);
+        overlapY =  ccpSub(min, topLeftCorner);
+        _overlap.y = overlapY.y;
         _bouncing = YES;
         _decelerating = NO;
+    }else{
+        _overlap.y = 0;
     }
-    else if (topLeftCorner.x > min.x) {
-        _overlap = ccpMult(topLeftCorner, -1);
+    
+    if (topLeftCorner.x > min.x) {
+        overlapX = ccpMult(topLeftCorner, -1);
+        _overlap.x = overlapX.x;
         _bouncing = YES;
         _decelerating = NO;
     }
     else if (topLeftCorner.x < max.x) {
-        _overlap = ccpMult(ccpSub(topLeftCorner, max), -1);
+        overlapX = ccpMult(ccpSub(topLeftCorner, max), -1);
+        _overlap.x = overlapX.x;
         _bouncing = YES;
         _decelerating = NO;
+    }else{
+        _overlap.x = 0;
     }
     
     
-// Bounce or Decelerate
+    
+    // Bounce or Decelerate
     if (_bouncing) {
-        if (ABS(_overlap.y) >= _minDeceleration) _overlap = ccpMult(_overlap,0.1f);
+        if ((ABS(_overlap.y) >= _minDeceleration) || (ABS(_overlap.x) >= _minDeceleration)) _overlap = ccpMult(_overlap,0.1f);
         
         [self dragging:_overlap];
         
-        if (ABS(_overlap.y) <= _minDeceleration) _bouncing = NO;
+        if ((ABS(_overlap.y) <= _minDeceleration) || (ABS(_overlap.x) <= _minDeceleration)) _bouncing = NO;
     }
     else if (_decelerating) {
         [self dragging:_speed];
@@ -181,7 +193,7 @@
             _speed = ccpMult(_speed, _inertia);
         }
     }
-/******************************************************************************************************/
+    /******************************************************************************************************/
     [super draw];
 }
 
@@ -189,6 +201,7 @@
 {
     if (_verticalScrollDisabled) dragPt = ccp(dragPt.x, 0);
     if (_horizontalScrollDisabled) dragPt = ccp(0, dragPt.y);
+    dragPt = ccp(dragPt.x, dragPt.y);
     
     if (_delegate) [_delegate scrollLayerDidScroll:dragPt];
     

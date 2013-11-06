@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132C2BC3182AB84300D0E15E /* AScrollLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2BC2182AB84300D0E15E /* AScrollLayer.m */; };
 		F817DD5D16EB83CF00F8FF70 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F817DD5C16EB83CF00F8FF70 /* QuartzCore.framework */; };
 		F817DD5F16EB83CF00F8FF70 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F817DD5E16EB83CF00F8FF70 /* OpenGLES.framework */; };
 		F817DD6116EB83CF00F8FF70 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F817DD6016EB83CF00F8FF70 /* OpenAL.framework */; };
@@ -138,10 +139,11 @@
 		F817DEFB16EB83D200F8FF70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F817DEFA16EB83D200F8FF70 /* main.m */; };
 		F817DEFE16EB83D200F8FF70 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F817DEFD16EB83D200F8FF70 /* AppDelegate.m */; };
 		F817E0C916EB85D000F8FF70 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F817E0C516EB853600F8FF70 /* HelloWorldLayer.m */; };
-		F817E0CC16EB864300F8FF70 /* AScrollLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F817E0CB16EB864300F8FF70 /* AScrollLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		132C2BC1182AB84300D0E15E /* AScrollLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AScrollLayer.h; path = ../AScrollLayer.h; sourceTree = "<group>"; };
+		132C2BC2182AB84300D0E15E /* AScrollLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AScrollLayer.m; path = ../AScrollLayer.m; sourceTree = "<group>"; };
 		F817DD5916EB83CF00F8FF70 /* AScrollLayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AScrollLayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F817DD5C16EB83CF00F8FF70 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F817DD5E16EB83CF00F8FF70 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -418,8 +420,6 @@
 		F817DEFD16EB83D200F8FF70 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F817E0C416EB853600F8FF70 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
 		F817E0C516EB853600F8FF70 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		F817E0CA16EB864200F8FF70 /* AScrollLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AScrollLayer.h; sourceTree = "<group>"; };
-		F817E0CB16EB864300F8FF70 /* AScrollLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AScrollLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,9 +442,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		132C2BC0182AB83000D0E15E /* AScrollLayer */ = {
+			isa = PBXGroup;
+			children = (
+				132C2BC1182AB84300D0E15E /* AScrollLayer.h */,
+				132C2BC2182AB84300D0E15E /* AScrollLayer.m */,
+			);
+			name = AScrollLayer;
+			sourceTree = "<group>";
+		};
 		F817DD5016EB83CF00F8FF70 = {
 			isa = PBXGroup;
 			children = (
+				132C2BC0182AB83000D0E15E /* AScrollLayer */,
 				F817DD6E16EB83CF00F8FF70 /* AScrollLayerDemo */,
 				F817DD5B16EB83CF00F8FF70 /* Frameworks */,
 				F817DD5A16EB83CF00F8FF70 /* Products */,
@@ -478,8 +488,6 @@
 		F817DD6E16EB83CF00F8FF70 /* AScrollLayerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				F817E0CA16EB864200F8FF70 /* AScrollLayer.h */,
-				F817E0CB16EB864300F8FF70 /* AScrollLayer.m */,
 				F817DEFC16EB83D200F8FF70 /* AppDelegate.h */,
 				F817DEFD16EB83D200F8FF70 /* AppDelegate.m */,
 				F817E0C416EB853600F8FF70 /* HelloWorldLayer.h */,
@@ -962,6 +970,7 @@
 				F817DDB816EB83D000F8FF70 /* CCAtlasNode.m in Sources */,
 				F817DDBB16EB83D000F8FF70 /* CCCamera.m in Sources */,
 				F817DDBE16EB83D000F8FF70 /* CCClippingNode.m in Sources */,
+				132C2BC3182AB84300D0E15E /* AScrollLayer.m in Sources */,
 				F817DDC216EB83D000F8FF70 /* CCConfiguration.m in Sources */,
 				F817DDC516EB83D000F8FF70 /* ccDeprecated.m in Sources */,
 				F817DDC816EB83D000F8FF70 /* CCDirector.m in Sources */,
@@ -1053,7 +1062,6 @@
 				F817DEF616EB83D200F8FF70 /* vec4.c in Sources */,
 				F817DEFB16EB83D200F8FF70 /* main.m in Sources */,
 				F817DEFE16EB83D200F8FF70 /* AppDelegate.m in Sources */,
-				F817E0CC16EB864300F8FF70 /* AScrollLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1171,7 @@
 				F817DF0916EB83D200F8FF70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
