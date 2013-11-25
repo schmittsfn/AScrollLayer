@@ -31,7 +31,6 @@ TODO
 
 Bugs
 ----
- - #001 Incorrect behavior when scrolling for both axis is enabled at the same time
 
 
 Contributing
