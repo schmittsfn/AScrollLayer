@@ -3,6 +3,7 @@ AScrollLayer
 This is an attempt to create an open source alternative to UIScrollView by implementing it as a cocos2d layer.
 The idea is to make it fully featured (e.g. rubber band, smooth scrolling).
 
+[![Showcase](https://i.ytimg.com/vi/WKrOY4Y4LRg/hqdefault.jpg)](https://www.youtube.com/watch?v=WKrOY4Y4LRg)
 
 How to use
 ----------
